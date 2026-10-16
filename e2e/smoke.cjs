@@ -35,7 +35,7 @@ const pack=await packPromise;
 if(!pack.suggestedFilename().endsWith('.html')) throw new Error('Bid pack export failed');
 
 await page.locator('[data-nav="#settings"]').click();
-await page.waitForSelector('#backupInput');
+await page.waitForSelector('#backupInput',{state:'attached'});
 const backupPromise=page.waitForEvent('download');
 await page.locator('[data-action="export"]').first().click();
 const backup=await backupPromise;
