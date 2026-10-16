@@ -1,56 +1,27 @@
 # Acquisition Notes
 
 ## Asset
-
-**AI RFP / Tender Response Generator (BidPilot)**
+**BidPilot — RFP & Tender Response Operations Workspace**
 
 ## Included
+- Browser-first application source and styles
+- Bid pipeline, response workspace, knowledge base, templates and document inventory
+- Local heuristic requirement extraction from pasted RFP text
+- Command Center task queue, risk register, clarification log, deadline radar and recent activity
+- HTML bid pack, requirements CSV and JSON workspace backup/restore
+- Sample fictional data
+- GitHub Pages deployment workflow with syntax and browser smoke validation
+- API contract, data model, production checklist and product overview
+- Acquisition listing and legal agreement templates
 
-- Complete prototype source code
-- Working browser application
-- Demo dataset and business logic
-- UI styles and SVG assets
-- API contract
-- Data model
-- Production checklist
-- Product overview
-- Acquisition listing copy
-- Software Asset Purchase Agreement template
-- IP Assignment Agreement template
-- GitHub Pages deployment workflow
+## Commercial position
+Suggested asking price: **USD 5,000 one-time**. This is a seller-set asking price, not a formal appraisal. Product is pre-launch and pre-revenue; no customers or revenue are claimed.
 
-## Asking price
+## Buyer handoff
+A buyer can replace local adapters with a secure backend, connect a chosen AI provider, implement real document parsing, move state to a tenant-aware database, add authentication/RBAC, email delivery and procurement/ERP integrations.
 
-**USD 5,000 — one-time payment**
+## Important exclusions / current limits
+The demo is not a production procurement system. It does not make external AI calls, send email, authenticate users, store data in a cloud database, parse uploaded PDF/DOCX files, or submit bids to external portals. Requirement classification is heuristic and must be reviewed by a human. Demo data and scores are fictional.
 
-Suggested payment schedule:
-
-- 40% at signing
-- 30% after source-code handoff and functional review
-- 20% after deployment/handoff validation
-- 10% at closing
-
-Schedule may be changed by mutual written agreement.
-
-## Handoff
-
-The buyer receives the project materials described in the final agreement, subject to third-party/open-source exclusions.
-
-The buyer can:
-
-- connect an AI provider
-- replace local persistence with a database
-- add authentication and multi-tenancy
-- connect cloud storage
-- add email and notifications
-- integrate CRM/procurement systems
-- change branding
-- create derivative commercial products
-
-## No ongoing development obligation
-
-Unless separately agreed in writing, the sale does not include ongoing development, support, hosting or maintenance.
-
-## Important
-
-This document is commercial project documentation, not legal advice. The included agreement templates contain placeholders such as [Acquirer Legal Name], [Jurisdiction], and [Date] and should be reviewed by qualified counsel.
+## Legal
+Agreement templates are starting points, not legal advice. Final transfer terms, excluded assets, third-party licenses, warranties, support obligations and payment milestones must be agreed in writing and reviewed by counsel.
