@@ -1,144 +1,79 @@
 # BidPilot
 
-AI-ready RFP / tender response workspace for B2B proposal teams.
+**AI-ready RFP & tender response workspace for B2B proposal teams.**
 
-BidPilot is a working SaaS prototype that connects the bid lifecycle from opportunity intake to requirements analysis, response drafting, review, compliance, submission readiness, outcomes, and analytics.
+BidPilot connects bid intake, requirement mapping, response drafting, evidence reuse, human review, submission readiness and outcome tracking in one browser-first workspace.
 
-> Prototype disclosure: this repository contains a browser-first prototype. AI, storage, email, notifications, authentication, database, and export integrations are implemented as local/mock adapters. Compliance scores and AI-generated text are demo outputs and are not validated procurement or legal advice.
+> **Prototype disclosure:** BidPilot is a functional local-first product prototype. AI generation is a deterministic demo adapter; it does not call an external model. Persistence is browser localStorage. Authentication, team collaboration, email delivery, cloud database, real PDF/DOCX parsing, ERP/procurement portal submission and production audit storage are not implemented. Demo data and compliance indicators are fictional and are not legal or procurement advice.
 
-## What is included
+## v2 Command Center release
 
-- Enterprise-style dashboard and bid pipeline
-- New Bid workflow with RFP text/source capture
-- RFP analysis and requirements/compliance matrix
-- Response workspace with requirement navigation, editor, review states, assignments, evidence, and Demo AI
-- Knowledge base and reusable proposal templates
-- Organizations and document library
-- Final submission readiness checklist and outcome tracking
-- Analytics calculated from persisted prototype data
-- Search, filtering, JSON backup/restore, resilient localStorage persistence
-- Modular ProductAdapters contracts ready for real AI/backend providers
-- GitHub Pages deployment workflow
-- Acquisition documentation and legal agreement templates
+- **Command Center** with deadline radar, open task queue, risks, clarification log and recent activity.
+- Create tasks with owner, due date, priority and linked bid; complete/reopen them.
+- Risk register with severity, owner and mitigation.
+- Clarification log with linked bid, question, owner and status.
+- Local heuristic RFP requirement extraction from pasted text, with category guesses and mandatory keyword detection; review and correct extracted requirements.
+- Self-contained HTML bid pack export including requirements, responses, evidence, blockers, risk notes and clarifications.
+- Requirements matrix CSV export.
+- Full JSON workspace backup and restore with file validation and confirmation.
+- Dynamic deadline metrics and collision-resistant sequential bid IDs.
+- Existing pipeline, response editor, demo AI drafting, evidence suggestions, templates, knowledge base, organizations, document inventory, final review, outcomes, analytics and adapter contracts.
+- Browser smoke tests gate the GitHub Pages deployment.
 
-## Demo
+## Core workflow
 
-The public demo is deployed from main using GitHub Actions and GitHub Pages once Pages is enabled for the repository.
+Dashboard → New Bid → local requirement extraction → Response Workspace → Evidence & Review → Command Center actions → Final Review → HTML bid pack / CSV export → Outcome tracking.
 
-Demo user: Jordan Smith
-Role: Bid Manager
-Login is simulated; no real authentication or password is used.
+## Live demo
 
-All seeded companies, contracts, case studies, and performance figures are fictional.
+https://dmytri595-design.github.io/BidPilot/
 
-## Local run
+Demo profile: Jordan Smith, Bid Manager. Login is simulated; no password is required.
 
-This is a dependency-free static SPA.
+All seeded organizations, opportunities and performance figures are fictional. Do not upload confidential procurement documents to this prototype.
+
+## Run locally
+
+Dependency-free static application:
 
 ~~~bash
 python -m http.server 8080
 ~~~
 
-Then open http://localhost:8080/.
+Open http://localhost:8080/.
 
-No API keys or environment variables are required for the prototype.
+## Data and privacy
+
+- Workspace state is stored in the current browser profile via localStorage.
+- JSON backup/restore is available under Settings.
+- CSV and HTML exports are generated client-side.
+- No backend receives data in the prototype.
+- Clearing browser storage removes the local workspace unless a backup exists.
 
 ## Architecture
 
 ~~~text
 Browser SPA
-   |
-   +-- UI / hash routing
-   |
-   +-- Local store (localStorage + JSON backup)
-   |
-   +-- ProductAdapters
-          |-- ai
-          |-- storage
-          |-- email
-          |-- notifications
-          |-- auth
-          |-- db
-          `-- export
+  ├─ UI / hash routing
+  ├─ localStorage workspace + JSON backup
+  ├─ heuristic requirement extraction
+  ├─ ProductAdapters
+  │   ├─ ai (demo/local)
+  │   ├─ storage (demo/local)
+  │   ├─ email / notifications (not delivered)
+  │   ├─ auth / db (demo/local)
+  │   └─ export (browser generated)
+  └─ HTML / CSV / JSON downloads
 ~~~
 
-The production target is:
-
-~~~text
-Browser
-  -> Secure Backend API
-  -> AI service
-  -> PostgreSQL / database
-  -> Object storage
-  -> Email / notifications
-  -> External procurement systems
-~~~
-
-See docs/API_CONTRACT.md, docs/DATA_MODEL.md, and docs/PRODUCTION_CHECKLIST.md.
+Production target: secure backend API, PostgreSQL, tenant isolation, RBAC, encrypted object storage, real AI provider, document parsing/OCR, transactional email, server-side audit log, billing and procurement integrations.
 
 ## Acquisition package
 
-This repository includes source code and UI assets, product and technical documentation, API and data model contracts, a production handoff checklist, acquisition notes, listing copy, software asset purchase agreement and IP assignment templates, and 800x500 SVG cover artwork.
+Repository includes source code, UI assets, product/technical docs, API contract, data model, production checklist, acquisition listing, and software asset purchase / IP assignment templates. Legal templates contain placeholders and should be reviewed by qualified counsel.
 
-Indicative asking price: USD 5,000 one-time.
-Commercial/IP terms: see the agreement templates; they use placeholders and should be reviewed by counsel before signing.
-
-## Implemented vs future
-
-### Implemented in prototype
-- End-to-end bid workflow
-- Persisted demo state
-- Mock/local AI adapter behavior
-- Requirement drafting and editing
-- Review/compliance UI
-- Analytics
-- JSON export/import
-- Error boundaries and invalid-route handling
-- GitHub Pages CI deployment configuration
-
-### Future production work
-- Secure authentication and RBAC
-- Multi-tenancy
-- Server-side database and object storage
-- Real PDF/DOCX parsing and OCR
-- Real LLM provider integration
-- Server-side PDF generation
-- Email/notification providers
-- Audit logging
-- Billing
-- Monitoring, backups, rate limiting, encryption, privacy and compliance controls
-- Enterprise procurement portal integrations
-
-## Repository structure
-
-index.html
-styles.css
-app.js
-assets/
-  cover.svg
-  icon.svg
-docs/
-  API_CONTRACT.md
-  DATA_MODEL.md
-  PRODUCTION_CHECKLIST.md
-  PRODUCT_OVERVIEW.md
-  ACQUISITION_NOTES.md
-  ACQUISITION_LISTING.md
-legal/
-  SOFTWARE_ASSET_PURCHASE_AGREEMENT.md
-  IP_ASSIGNMENT_AGREEMENT.md
-.github/workflows/
-  pages.yml
-404.html
-LICENSE
-NOTICE.md
+Indicative asking price: **USD 5,000 one-time**. Pre-launch / pre-revenue; no customer or revenue claims.
 
 ## License
 
-The repository uses a permissive software license for the prototype source. Third-party components, if any are added by a future buyer, remain subject to their own licenses. See NOTICE.md.
-
-## Buyer handoff
-
-A buyer can take the prototype as a product foundation, replace the mock adapters with secure backend services, connect a preferred AI provider, migrate state to a database, and apply new branding.
-
-Project content is in English by design.
+See LICENSE and NOTICE.md. Third-party components added by a future buyer remain subject to their own licenses.
