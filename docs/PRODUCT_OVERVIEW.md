@@ -2,65 +2,26 @@
 
 ## Positioning
 
-**AI-ready B2B SaaS for accelerating RFP and tender responses.**
+**BidPilot — requirement-first RFP response operations for B2B teams.**
 
-BidPilot helps proposal teams move from RFP intake to structured requirements, reusable evidence, response drafting, review, submission readiness and outcome tracking.
-
-## Target buyers
-
-- Venture studios
-- SaaS companies
-- Agencies
-- Procurement-tech companies
-- Sales-tech companies
-- Systems integrators
-- Strategic acquirers seeking a working product foundation
+BidPilot helps bid and proposal teams move from opportunity intake to requirements, evidence-backed drafting, human review, submission readiness and outcome tracking. The v2 Command Center adds operational follow-through: tasks, deadline radar, risk register and buyer clarification log.
 
 ## Target users
-
-Sales, proposal/bid managers, account executives, pre-sales, business development, procurement response teams, executives and specialist tender consultants.
+- Bid / proposal managers
+- Sales and pre-sales teams
+- Technical, security and legal reviewers
+- Tender consultants and systems integrators
 
 ## Core workflow
+Dashboard → Create Bid → Paste RFP text → Local heuristic requirement extraction → Response Workspace → Evidence suggestions → Human review → Command Center tasks/risks/clarifications → Final Review → HTML bid pack / CSV export → Outcome.
 
-Dashboard → Create Bid → RFP Capture → Analysis → Requirements → Response Workspace → AI Draft → Human Review → Compliance → Final Review → Submission → Outcome → Analytics.
+## v2 differentiators
+- Requirement-first workspace rather than a generic chatbot
+- Local extraction of requirement-like lines from pasted RFP text
+- One operational control room for deadline risk, tasks, clarifications and mitigations
+- Requirement matrix export and self-contained HTML bid pack
+- Browser-local JSON backup and restore
+- Modular adapter boundaries for a buyer to replace demo services
 
-## Differentiation
-
-- Requirement-first response workflow rather than a generic chatbot
-- Evidence and knowledge reuse
-- Review and accountability states
-- Modular AI provider boundary
-- Acquisition-ready documentation and handoff
-- Lightweight browser-first prototype with no vendor lock-in
-
-## Demo data
-
-The prototype uses fictional organizations:
-
-- Northstar Municipal Alliance
-- Aurelia Systems Group
-- Meridian Care Network
-- CivicBridge Authority
-- BluePeak Financial Cooperative
-
-No seeded company, customer, contract, reference, certification or metric is intended as a real claim.
-
-## Business model opportunity
-
-Potential production monetization:
-
-- Per-seat SaaS
-- Per-active-bid usage
-- AI consumption margin
-- Enterprise annual contract
-- Private deployment / customer-owned AI
-- Proposal agency workspace plans
-
-These are opportunities, not current revenue claims.
-
-## Current stage
-
-**Pre-launch / Working prototype**  
-**Revenue: Pre-revenue**
-
-The prototype is designed to demonstrate product workflow and technical direction, not production readiness.
+## Data and limitations
+The prototype stores state in localStorage. Requirement extraction uses browser-side keyword heuristics, not an LLM or parser; it may miss requirements and can classify them incorrectly. AI drafting is deterministic demo text. No actual email, authentication, cloud collaboration, database, PDF/DOCX parsing, procurement portal submission or ERP sync is included. All seeded data is fictional.

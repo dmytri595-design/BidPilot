@@ -1,53 +1,35 @@
 # Acquisition Listing Copy
 
-## Project / Idea Title
+## Product
+BidPilot — RFP & Tender Response Operations Workspace
 
-AI RFP / Tender Response Generator
-
-## Short Tagline
-
-AI-powered RFP analysis and proposal response workspace for B2B teams.
+## Tagline
+From RFP requirements to an auditable, review-ready bid pack.
 
 ## Industry
+B2B SaaS / Proposal Operations / Procurement Technology
 
-AI & Software
-
-## Country
-
-Norway
-
-## Project Stage
-
-Pre-Seed
-
-## Product Name
-
-AI RFP / Tender Response Generator
-
-## Users
-
-Pre-launch / Working prototype
-
-## Monthly Revenue
-
-Pre-revenue
-
-## Asking Price
-
-USD 5,000
-
-## Payment Model
-
-One-Time Payment
+## Stage
+Working browser-first prototype / pre-launch / pre-revenue
 
 ## Description
+BidPilot is a requirement-first RFP and tender response workspace. It connects bid intake, local heuristic requirement extraction, response drafting, reusable evidence, human review, final readiness, outcomes and analytics. The v2 Command Center adds a deadline radar, task queue with owners and priorities, risk register, clarification log, recent activity, requirements CSV export, self-contained HTML bid-pack export, and JSON backup/restore.
 
-BidPilot is a working B2B SaaS prototype for accelerating RFP and tender responses. It connects opportunity intake, RFP analysis, requirements extraction, response drafting, knowledge reuse, human review, compliance checks, submission readiness, outcomes and analytics in one workflow.
+The source is modular and the workflow is ready for a buyer to connect a real AI provider, secure backend, database, document parsing, email and enterprise integrations.
 
-The prototype is intentionally built with modular adapters so a buyer can connect a preferred AI provider, database, authentication, document storage, email/notifications and enterprise systems without redesigning the product workflow.
+## Honest status
+- Users: 0 claimed
+- Monthly revenue: $0 / pre-revenue
+- AI: deterministic demo adapter; no external model call
+- Requirement extraction: local keyword heuristics over pasted text
+- Persistence: browser localStorage only
+- Email, auth, multi-user collaboration, cloud DB, real PDF/DOCX parsing, ERP and portal integrations: not implemented
 
-All demo companies and performance data are fictional. AI responses and compliance scores are mock/local prototype outputs.
+## Suggested asking price
+USD 5,000 one-time (seller estimate, not a verified valuation).
 
-## Buyer profile
+## Live demo
+https://dmytri595-design.github.io/BidPilot/
 
-Suitable for a SaaS company, agency, procurement-tech team, sales-tech company, venture studio or acquirer looking for a working product foundation rather than a landing page concept.
+## Source
+https://github.com/dmytri595-design/BidPilot
