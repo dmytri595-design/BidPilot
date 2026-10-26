@@ -8,6 +8,15 @@ async function runPromptAction(locator,values){let i=0;const handler=async d=>{a
 await page.goto(process.env.SMOKE_URL||'http://127.0.0.1:4173',{waitUntil:'networkidle'});
 await page.waitForSelector('.shell');
 if(!(await page.locator('body').innerText()).includes('Good morning')) throw new Error('Dashboard did not load');
+if(!(await page.locator('body').innerText()).includes('Prototype · local demo')) throw new Error('Prototype disclosure is missing');
+let seededState=await page.evaluate(()=>JSON.parse(localStorage.getItem('bidpilot:v1')));
+const clock=new Date();const localToday=[clock.getFullYear(),String(clock.getMonth()+1).padStart(2,'0'),String(clock.getDate()).padStart(2,'0')].join('-');
+if(!seededState.bids.some(b=>!['Won','Lost','Submitted'].includes(b.status)&&b.deadline>=localToday)) throw new Error('Seed data has no upcoming open bid');
+await page.locator('[data-nav="#new-bid"]').click();
+await page.locator('[data-action="load-sample"]').click();
+if(!(await page.locator('[name="name"]').inputValue()).includes('Cloud Security')) throw new Error('Sample RFP did not populate bid name');
+if(!(await page.locator('[name="rfp"]').inputValue()).includes('supplier must demonstrate')) throw new Error('Sample RFP text did not load');
+if(!(await page.locator('[name="deadline"]').inputValue())||await page.locator('[name="deadline"]').inputValue()<localToday) throw new Error('Sample RFP deadline is not future-dated');
 await page.locator('[data-nav="#command"]').click();
 await page.waitForSelector('h1');
 if(!(await page.locator('body').innerText()).includes('Command Center')) throw new Error('Command Center did not load');
@@ -40,6 +49,24 @@ const backupPromise=page.waitForEvent('download');
 await page.locator('[data-action="export"]').first().click();
 const backup=await backupPromise;
 if(!backup.suggestedFilename().endsWith('.json')) throw new Error('JSON backup export failed');
+
+await page.evaluate(()=>{location.hash='#bid/BID-1042'});
+await page.waitForSelector('h1');
+const directPackPromise=page.waitForEvent('download');
+await page.locator('[data-action="export-pack"][data-id="BID-1042"]').click();
+const directPack=await directPackPromise;
+if(!directPack.suggestedFilename().includes('bid-1042')) throw new Error('Context-aware bid-pack export failed');
+
+await page.evaluate(()=>{location.hash='#dashboard'});
+await page.waitForSelector('[data-action="reset"]');
+const resetHandler=async dialog=>{if(dialog.type()==='confirm') await dialog.accept(); else await dialog.dismiss()};
+page.on('dialog',resetHandler);
+await page.locator('[data-action="reset"]').click();
+await page.waitForTimeout(100);
+page.off('dialog',resetHandler);
+if(!(await page.locator('body').innerText()).includes('Good morning')) throw new Error('Reset did not keep the dashboard rendered');
+const resetState=await page.evaluate(()=>JSON.parse(localStorage.getItem('bidpilot:v1')));
+if(resetState.tasks.length||resetState.risks.length||resetState.clarifications.length) throw new Error('Reset did not clear local activity');
 
 if(errors.length) throw new Error('Page errors: '+errors.join(' | '));
 console.log(JSON.stringify({ok:true,taskPersistence:true,riskRegister:true,clarificationLog:true,requirementsCsv:csv.suggestedFilename(),bidPack:pack.suggestedFilename(),backup:backup.suggestedFilename()}));
