@@ -12,7 +12,7 @@ if(!(await page.locator('body').innerText()).includes('Prototype · local demo')
 let seededState=await page.evaluate(()=>JSON.parse(localStorage.getItem('bidpilot:v1')));
 const clock=new Date();const localToday=[clock.getFullYear(),String(clock.getMonth()+1).padStart(2,'0'),String(clock.getDate()).padStart(2,'0')].join('-');
 if(!seededState.bids.some(b=>!['Won','Lost','Submitted'].includes(b.status)&&b.deadline>=localToday)) throw new Error('Seed data has no upcoming open bid');
-await page.locator('[data-nav="#new-bid"]').click();
+await page.locator('[data-nav="#new-bid"]').first().click();
 await page.locator('[data-action="load-sample"]').click();
 if(!(await page.locator('[name="name"]').inputValue()).includes('Cloud Security')) throw new Error('Sample RFP did not populate bid name');
 if(!(await page.locator('[name="rfp"]').inputValue()).includes('supplier must demonstrate')) throw new Error('Sample RFP text did not load');
