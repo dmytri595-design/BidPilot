@@ -72,7 +72,7 @@ Production target: secure backend API, PostgreSQL, tenant isolation, RBAC, encry
 
 ## Acquisition package
 
-Repository includes source code, UI assets, product/technical docs, API contract, data model, production checklist, acquisition listing, and software asset purchase / IP assignment templates. Legal templates contain placeholders and should be reviewed by qualified counsel.
+Repository includes source code, UI assets, product/technical docs, API contract, data model, production checklist, acquisition listing, buyer brief, and software asset purchase / IP assignment templates. See [Buyer Brief](docs/BUYER_BRIEF.md) and [Acquisition Listing](docs/ACQUISITION_LISTING.md). Legal templates contain placeholders and should be reviewed by qualified counsel.
 
 Indicative asking price: **USD 5,000 one-time**. Pre-launch / pre-revenue; no customer or revenue claims.
 
