@@ -19,6 +19,8 @@ BidPilot connects bid intake, requirement mapping, response drafting, evidence r
 - Dynamic deadline metrics and collision-resistant sequential bid IDs.
 - Existing pipeline, response editor, demo AI drafting, evidence suggestions, templates, knowledge base, organizations, document inventory, final review, outcomes, analytics and adapter contracts.
 - Browser smoke tests gate the GitHub Pages deployment.
+- One-click fictional sample RFP for a guided first-run experience; active demo deadlines are generated relative to the current date.
+- Context-aware bid-pack export from an individual bid, in addition to Command Center exports.
 
 ## Core workflow
 
