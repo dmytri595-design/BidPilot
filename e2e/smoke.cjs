@@ -9,7 +9,12 @@ await page.goto(process.env.SMOKE_URL||'http://127.0.0.1:4173',{waitUntil:'netwo
 await page.waitForSelector('.shell');
 if(!(await page.locator('body').innerText()).includes('Good morning')) throw new Error('Dashboard did not load');
 if(!(await page.locator('body').innerText()).includes('Prototype · local demo')) throw new Error('Prototype disclosure is missing');
+// Reset is the explicit demo-seeding action; it also persists the initial workspace.
+page.once('dialog',dialog=>dialog.accept());
+await page.locator('[data-action="reset"]').click();
+await page.waitForTimeout(100);
 let seededState=await page.evaluate(()=>JSON.parse(localStorage.getItem('bidpilot:v1')));
+if(!seededState) throw new Error('Reset did not persist the demo workspace');
 const clock=new Date();const localToday=[clock.getFullYear(),String(clock.getMonth()+1).padStart(2,'0'),String(clock.getDate()).padStart(2,'0')].join('-');
 if(!seededState.bids.some(b=>!['Won','Lost','Submitted'].includes(b.status)&&b.deadline>=localToday)) throw new Error('Seed data has no upcoming open bid');
 await page.locator('[data-nav="#new-bid"]').first().click();
