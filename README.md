@@ -79,3 +79,10 @@ Indicative asking price: **USD 5,000 one-time**. Pre-launch / pre-revenue; no cu
 ## License
 
 See LICENSE and NOTICE.md. Third-party components added by a future buyer remain subject to their own licenses.
+
+## Two-site product setup
+
+- **Public product website:** https://bidpilot-brand.vercel.app/
+- **Main business application:** https://dmytri595-design.github.io/BidPilot/
+
+The public website introduces the product and links to the existing application. The application remains the root homepage; its workflow and operational interface are kept separate from the promotional website. Website source: [website/index.html](website/index.html).
