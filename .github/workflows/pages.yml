@@ -45,7 +45,7 @@ jobs:
         run: python3 -m http.server 4173 >/tmp/bidpilot-server.log 2>&1 &
       - name: Run browser smoke
         env:
-          SMOKE_URL: http://127.0.0.1:4173/app.html
+          SMOKE_URL: http://127.0.0.1:4173/
         run: node e2e/smoke.cjs
 
   deploy:
